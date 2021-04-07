@@ -1,42 +1,37 @@
 import React from "react";
-import { View, Text, ScrollView, FlatList, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, ScrollView, FlatList, StyleSheet, SafeAreaView, Image } from "react-native";
 import { useSelector } from 'react-redux';
 
-export default class ProductListScene extends React.Component {
-  render() {
-    function product() {
-      const products = useSelector((state) => state.ProductListApp.availableProducts)
-      return (products)
-      
-    }
-  console.log(products)
+export default function ProductListScene(props){
+  const products = useSelector(state=>state.products.availableProducts)
   return (
       <SafeAreaView>
-        <Text style={{ fontSize: 30, color: "black" }}>상품 리스트</Text>
 
-        <View style={styles.card}>
-            {/* <ScrollView> */}
-
+          <View>
               <FlatList 
+                style={{margin:10}}
                 data={products}
                 keyExtractor={(item) => item.id}
-                renderItem={({itemData}) => {
-                  return <Text>{itemData.item.title}</Text>}}
-                />
-            {/* </ScrollView> */}
-        </View>
+                renderItem={({index, item, separators}) => {
+                    
+                return(
+                <View style={{margin:1}}>
+                {!!item.title && (
+                  <Text>{item.title}</Text>
+                )}
+                {item.coverImage && (
+                  <Image 
+                    style={{width: '100%', height: 200}}
+                    source={{uri:item.coverImage}} />
+                )}
+                {!!item.price && (
+                  <Text>{item.price}원 </Text>
+                )}
+                </View>
+                )
+                }}
+              />
+          </View>
       </SafeAreaView>
-    );
-  }
+  )
 }
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-    flex: 1,
-    borderTopLeftRadius: 10, // to provide rounded corners
-    borderTopRightRadius: 10, // to provide rounded corners
-    marginLeft: 10,
-    marginRight: 10,
-  }
-
-})

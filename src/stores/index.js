@@ -3,6 +3,6 @@ import { createStore } from "redux"
 
 import ProductListApp from "./reducers/products"
 
-const store = createStore(ProductListApp)
+const store = createStore({products:ProductListApp})
 
 export default store
