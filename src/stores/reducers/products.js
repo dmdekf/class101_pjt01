@@ -9,8 +9,13 @@ import {
 export const productsSlice = createSlice({
     name: 'productReducer',
     initialState: PRODUCTS,
-    availableProducts: PRODUCTS,
+    reducers:{
+    addToCart: ((prod) => prod),
     userProducts: PRODUCTS.filter((prod) => prod.id === "id" ),
+    removeToCart: ((prod) => prod),
+    },
 });
+
+export const { addToCart, userProducts, removeToCart} = productsSlice.actions
 
 export default productsSlice.reducer

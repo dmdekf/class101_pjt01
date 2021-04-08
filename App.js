@@ -10,14 +10,16 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 
 import { Ionicons } from "@expo/vector-icons";
 
-import reducer from './src/stores/reducers/products'
-
+import productReducer from './src/stores/reducers/products'
+import cartReducer from './src/stores/reducers/carts'
 import HomeScene from "./src/screens/HomeScene";
 import ProductListScene from "./src/screens/ProductListScene"
 import TabBarIcon from "./src/components/TabBarIcon";
 
+
 const rootReducer = combineReducers({
-  products: reducer
+  products: productReducer,
+  carts: cartReducer,
 });
 
 const store = createStore(rootReducer)
@@ -134,6 +136,6 @@ export default function App() {
       <AppContainer />
     </Provider>
   )
-};
+}
 
 
