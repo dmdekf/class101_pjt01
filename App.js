@@ -3,7 +3,7 @@ import React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-
+import Pagination from 'react-native-pagination';
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
@@ -24,7 +24,10 @@ const store = createStore(rootReducer)
 
 const DefaultScene = props => {
   return (
-    <View>
+    <View style={{backgroundColor: 'white',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end'}}>
       <Text>SampleScreen</Text>
     </View>
   );

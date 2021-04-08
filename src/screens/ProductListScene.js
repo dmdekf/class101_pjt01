@@ -1,23 +1,25 @@
 import React from "react";
-import { View, Text, ScrollView, FlatList, StyleSheet, SafeAreaView, Image } from "react-native";
+import { View, Text, ScrollView, FlatList, StyleSheet, SafeAreaView, Image,Button, Alert } from "react-native";
 import { useSelector } from 'react-redux';
+import { addToCart } from "../stores/actions/cart";
 
 export default function ProductListScene(props){
   const products = useSelector(state=>state.products.availableProducts)
   return (
-      <SafeAreaView>
+      <SafeAreaView style={{backgroundColor: 'white'}}>
 
           <View>
               <FlatList 
                 style={{margin:10}}
                 data={products}
                 keyExtractor={(item) => item.id}
+                
                 renderItem={({index, item, separators}) => {
                     
                 return(
                 <View style={{margin:1}}>
                 {!!item.title && (
-                  <Text>{item.title}</Text>
+                  <Text style={{ fontSize: 18}} >{item.title}</Text>
                 )}
                 {item.coverImage && (
                   <Image 
@@ -25,8 +27,12 @@ export default function ProductListScene(props){
                     source={{uri:item.coverImage}} />
                 )}
                 {!!item.price && (
-                  <Text>{item.price}원 </Text>
+                  <Text style={{color:'#888'}}>{item.price}원 </Text>
                 )}
+                <Button
+        title="담기"
+        onPress={()=>Alert.alert('담기 성공')}
+      />
                 </View>
                 )
                 }}
