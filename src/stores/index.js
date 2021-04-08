@@ -1,8 +1,11 @@
-import { createStackNavigator } from "react-navigation-stack"
-import { createStore } from "redux"
+import { combineReducers,configureStore,
+    createAction,
+    createReducer,  } from '@reduxjs/toolkit';
 
-import ProductListApp from "./reducers/products"
+import ProductReducer from './reducers/products'
 
-const store = createStore({products:ProductListApp})
-
-export default store
+export default configureStore({
+    reducer: {
+        products:ProductReducer,
+    },
+  })

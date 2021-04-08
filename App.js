@@ -10,14 +10,14 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 
 import { Ionicons } from "@expo/vector-icons";
 
-import ProductListApp from './src/stores/reducers/products'
+import reducer from './src/stores/reducers/products'
 
 import HomeScene from "./src/screens/HomeScene";
 import ProductListScene from "./src/screens/ProductListScene"
 import TabBarIcon from "./src/components/TabBarIcon";
 
 const rootReducer = combineReducers({
-  products: ProductListApp
+  products: reducer
 });
 
 const store = createStore(rootReducer)

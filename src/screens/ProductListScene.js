@@ -4,17 +4,19 @@ import { useSelector } from 'react-redux';
 import { addToCart } from "../stores/actions/cart";
 
 export default function ProductListScene(props){
-  const products = useSelector(state=>state.products.availableProducts)
+  const product = useSelector(state=>state.products)
   return (
+    
       <SafeAreaView style={{backgroundColor: 'white'}}>
 
           <View>
               <FlatList 
                 style={{margin:10}}
-                data={products}
+                data={product}
+                
                 keyExtractor={(item) => item.id}
                 
-                renderItem={({index, item, separators}) => {
+                renderItem={({item}) => {
                     
                 return(
                 <View style={{margin:1}}>
