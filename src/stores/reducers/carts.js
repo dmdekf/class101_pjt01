@@ -9,7 +9,14 @@ export const cartsSlice = createSlice({
     name: 'cartReducer',
     initialState:{
         cartscore:0,
-        cartitems:[]
+        cartitems:[
+          {
+            id:String,
+            score:0,
+            title:String,
+            price:Number,
+          }
+        ]
     },
     reducers:{
     addProducts: (state, { payload }) => {
@@ -17,7 +24,8 @@ export const cartsSlice = createSlice({
   
         if (item) {
           item.score += 1;
-          item.id.socre +=1
+          item.cartitems.socre +=1
+
         } else {
           state.cartitems.push(payload)
           item.score += 1;

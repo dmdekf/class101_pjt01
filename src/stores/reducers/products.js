@@ -6,11 +6,12 @@ import {
     createReducer,
 } from "@reduxjs/toolkit";
 
+
+
 export const productsSlice = createSlice({
     name: 'productReducer',
-    initialState: PRODUCTS,
+    initialState: PRODUCTS,CARTS,
     reducers:{
-    addToCart: ((prod) => prod),
     userProducts: PRODUCTS.filter((prod) => prod.id === "id" ),
     removeToCart: ((prod) => prod),
     },
