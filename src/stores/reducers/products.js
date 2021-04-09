@@ -10,11 +10,17 @@ import {
 
 export const productsSlice = createSlice({
     name: 'productReducer',
-    initialState: PRODUCTS,CARTS,
+    initialState: PRODUCTS,
     reducers:{
-    userProducts: PRODUCTS.filter((prod) => prod.id === "id" ),
-    removeToCart: ((prod) => prod),
+    removeToCart: ((prod) => prod.score +=1),
+    addToCart : ((state, prod) => {
+        if (state.PRODUCTS.prod.score > 0) {
+          return state, prod.score -=1
+        }
+
+      }),
     },
+    
 });
 
 export const { addToCart, userProducts, removeToCart} = productsSlice.actions

@@ -2,10 +2,9 @@ import React from "react";
 import { View, Text, ScrollView, FlatList, StyleSheet, SafeAreaView, Image,Button, Alert } from "react-native";
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, userProducts, removeToCart } from "../stores/reducers/products";
-import { addToCart, userProducts, removeToCart } from "../stores/reducers/products";
-addProducts,
 
-export default function ProductListScene(){
+
+export default function ProductListScene(){ 
   const cart = useSelector(state=>state.carts)
   const product = useSelector(state=>state.products)
   const dispatch = useDispatch()
@@ -36,10 +35,10 @@ export default function ProductListScene(){
             <View> 
               {
                 cart.cartscore > 0 && cart.cartitems.id.filter(item.id)
-                ? <Button title="빼기" onPress={()=>{Alert.alert('빼기 성공');(dispatch(removeToCart({cart.cartitems})));(item.score +=1)}}
+                ? <Button title="빼기" onPress={()=>{Alert.alert('빼기 성공');(dispatch(removeToCart({item})));}}
               >
                   </Button>
-                : <Button title="담기" onPress={()=>{Alert.alert('담기 성공');(dispatch(addToCart(item)));(item.score -=1)}}
+                : <Button title="담기" onPress={()=>{Alert.alert('담기 성공');(dispatch(addToCart(item)));}}
               >
                   </Button>
               }

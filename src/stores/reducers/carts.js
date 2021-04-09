@@ -5,6 +5,10 @@ import {
     createReducer,
 } from "@reduxjs/toolkit";
 
+import {
+  addToCart
+} from './products'
+
 export const cartsSlice = createSlice({
     name: 'cartReducer',
     initialState:{
@@ -12,25 +16,21 @@ export const cartsSlice = createSlice({
         cartitems:[
           {
             id:String,
-            score:0,
+            addscore:0,
             title:String,
             price:Number,
           }
         ]
     },
     reducers:{
-    addProducts: (state, { payload }) => {
-        const item = state.cartitems.find((payload)=> state.cartitems.id === payload.id);
-  
-        if (item) {
-          item.score += 1;
-          item.cartitems.socre +=1
-
-        } else {
-          state.cartitems.push(payload)
-          item.score += 1;
-        }
-    },
+      addprod: ((state, action) => {
+        switch(action.type) {
+          case  addToCart:
+            if (state.cartitems.id.filter(action.id)) {
+              return action}
+      }
+    }),
+      checkOut: ((state, action) => state.cartitems),
     },
 });
 
