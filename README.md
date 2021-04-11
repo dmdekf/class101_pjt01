@@ -17,7 +17,31 @@
 ### ✨ Main Feature
  - react native tooltip을 사용하여 상품 리스트 구현
  - 상품 장바구니 담기 구현
- 
+
+<hr/>
+
+### 화면 미리보기
+
+- 메인 페이지
+
+  ![](./readme_images/0.png)
+
+- 상품리스트 페이지
+
+  ![2](./readme_images/2.png)
+
+- 장바구니 페이지
+
+  ![1](./readme_images/1.png)
+
+  
+
+  
+
+
+
+<hr/>
+
 ## Install
 
 ```sh
