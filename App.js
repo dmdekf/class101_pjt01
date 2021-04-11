@@ -14,6 +14,7 @@ import productReducer from './src/stores/reducers/products'
 import cartReducer from './src/stores/reducers/carts'
 import HomeScene from "./src/screens/HomeScene";
 import ProductListScene from "./src/screens/ProductListScene"
+import CartScene from "./src/screens/CartScene"
 import TabBarIcon from "./src/components/TabBarIcon";
 
 
@@ -24,16 +25,6 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer)
 
-const DefaultScene = props => {
-  return (
-    <View style={{backgroundColor: 'white',
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-end'}}>
-      <Text>SampleScreen</Text>
-    </View>
-  );
-};
 
 const defaultNavigationOptions = {
   headerTintColor: "black",
@@ -46,7 +37,7 @@ const HomeStack = createStackNavigator(
   {
     Home: HomeScene,
     ProductList: ProductListScene,
-    Cart: DefaultScene
+    Cart: CartScene
   },
   {
     defaultNavigationOptions
@@ -84,7 +75,7 @@ ListStack.navigationOptions = {
 
 const CartStack = createStackNavigator(
   {
-    Cart: DefaultScene
+    Cart: CartScene
   },
   {
     defaultNavigationOptions

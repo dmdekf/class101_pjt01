@@ -14,26 +14,21 @@ export const cartsSlice = createSlice({
     initialState:{
         cartscore:0,
         cartitems:[
-          {
-            id:String,
-            addscore:0,
-            title:String,
-            price:Number,
-          }
-        ]
+      ],
     },
     reducers:{
-      addprod: ((state, action) => {
-        switch(action.type) {
-          case  addToCart:
-            if (state.cartitems.id.filter(action.id)) {
-              return action}
+      addProducts: ((state, action) => {
+        const { id, title, price } = action.payload.payload
+        console.log(id, title, price)
+        state.cartitems.push({itemid:id, itemtitle:title, itemprice:price,});
+        console.log(state.cartitems)
+        state.cartscore+=1
       }
-    }),
+    ),
       checkOut: ((state, action) => state.cartitems),
     },
 });
 
-export const { addProducts, } = cartsSlice.actions
+export const { addProducts, checkOut,} = cartsSlice.actions
 
 export default cartsSlice.reducer

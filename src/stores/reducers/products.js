@@ -12,10 +12,10 @@ export const productsSlice = createSlice({
     name: 'productReducer',
     initialState: PRODUCTS,
     reducers:{
-    removeToCart: ((prod) => prod.score +=1),
-    addToCart : ((state, prod) => {
-        if (state.PRODUCTS.prod.score > 0) {
-          return state, prod.score -=1
+    removeToCart: ((state, action) => action.score +=1),
+    addToCart : ((state, action) => {
+        if (action.score > 0) {
+          return state, action.score -=1
         }
 
       }),
@@ -23,6 +23,6 @@ export const productsSlice = createSlice({
     
 });
 
-export const { addToCart, userProducts, removeToCart} = productsSlice.actions
+export const { addToCart, removeToCart} = productsSlice.actions
 
 export default productsSlice.reducer

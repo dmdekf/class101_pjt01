@@ -1,13 +1,16 @@
 import React from "react";
 import { View, Text, ScrollView, FlatList, StyleSheet, SafeAreaView, Image,Button, Alert } from "react-native";
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart, userProducts, removeToCart } from "../stores/reducers/products";
+import { addToCart, removeToCart } from "../stores/reducers/products";
+import {addProducts, checkOut } from "../stores/reducers/carts"
 
 
 export default function ProductListScene(){ 
   const cart = useSelector(state=>state.carts)
   const product = useSelector(state=>state.products)
   const dispatch = useDispatch()
+  
+  console.log(cart)
   return (
     <SafeAreaView style={{backgroundColor: 'white'}}>
       <View>
@@ -16,7 +19,7 @@ export default function ProductListScene(){
             data={product}
             
             keyExtractor={(item) => item.id}
-            
+            initialScrollIndex={5}
             renderItem={({item}) => {
                 
             return(
@@ -32,26 +35,20 @@ export default function ProductListScene(){
             {!!item.price && (
               <Text style={{color:'#888'}}>{item.price}원 </Text>
             )}
+            
             <View> 
               {
-                cart.cartscore > 0 && cart.cartitems.id.filter(item.id)
+                cart.cartscore < 0 //&& checked(item.id)
                 ? <Button title="빼기" onPress={()=>{Alert.alert('빼기 성공');(dispatch(removeToCart({item})));}}
               >
                   </Button>
-                : <Button title="담기" onPress={()=>{Alert.alert('담기 성공');(dispatch(addToCart(item)));}}
+                : <Button title="담기" onPress={()=>{Alert.alert('담기 성공');(dispatch(addProducts(dispatch(addToCart(item)))));}}
               >
                   </Button>
               }
 
             </View>
-            {/* <Button
-              title="담기"
-              onPress={()=>{Alert.alert('담기 성공');
-               (dispatch(addToCart(item)));
-               (item.score -=1)
-                }}
-              
-            /> */}
+            
             </View>
             )
             }}
