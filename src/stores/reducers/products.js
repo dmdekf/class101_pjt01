@@ -12,7 +12,7 @@ export const productsSlice = createSlice({
     name: 'productReducer',
     initialState: PRODUCTS,
     reducers:{
-    removeToCart: ((state, action) => action.score +=1),
+    removeToCart: ((state, action) => {return state, action.score +=1 }),
     addToCart : ((state, action) => {
         if (action.score > 0) {
           return state, action.score -=1

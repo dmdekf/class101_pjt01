@@ -13,7 +13,6 @@ export default function ProductListScene(){
     <SafeAreaView style={{backgroundColor: 'white'}}>
       <View>
       <Text>장바구니 리스트</Text>
-        <ScrollView>
           <FlatList 
             style={{margin:10}}
             data={cart}
@@ -38,7 +37,6 @@ export default function ProductListScene(){
             }}
           />
           <Button title="계산하기"/>
-          </ScrollView>
       </View>
     </SafeAreaView>
   )

@@ -19,9 +19,11 @@ export const cartsSlice = createSlice({
     reducers:{
       addProducts: ((state, action) => {
         const { id, title, price } = action.payload.payload
-        console.log(id, title, price)
+        // console.log(id, title, price)
         state.cartitems.push({itemid:id, itemtitle:title, itemprice:price,});
-        console.log(state.cartitems)
+        const check = state.cartitems.find(id=>{return state.cartitems!==id})
+        
+        // console.log(check)
         state.cartscore+=1
       }
     ),

@@ -9,8 +9,8 @@ export default function ProductListScene(){
   const cart = useSelector(state=>state.carts)
   const product = useSelector(state=>state.products)
   const dispatch = useDispatch()
-  
-  console.log(cart)
+  const checkeditem = cart.cartitems.find(title=>{return cart.cartitems!==title})
+  // console.log(checkeditem)
   return (
     <SafeAreaView style={{backgroundColor: 'white'}}>
       <View>
@@ -19,7 +19,6 @@ export default function ProductListScene(){
             data={product}
             
             keyExtractor={(item) => item.id}
-            initialScrollIndex={5}
             renderItem={({item}) => {
                 
             return(
@@ -38,13 +37,10 @@ export default function ProductListScene(){
             
             <View> 
               {
-                cart.cartscore < 0 //&& checked(item.id)
-                ? <Button title="빼기" onPress={()=>{Alert.alert('빼기 성공');(dispatch(removeToCart({item})));}}
-              >
-                  </Button>
-                : <Button title="담기" onPress={()=>{Alert.alert('담기 성공');(dispatch(addProducts(dispatch(addToCart(item)))));}}
-              >
-                  </Button>
+                true //checkeditem //cart.cartscore > 0 &&
+                ? <Button title="담기" onPress={()=>{Alert.alert('담기 성공');(dispatch(addProducts(dispatch(addToCart(item)))));}}/>
+                : <Button title="빼기" onPress={()=>{Alert.alert('빼기 성공');}}/>
+              
               }
 
             </View>
